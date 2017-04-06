@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_network"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_native_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1 native上半部分"
+        android:textSize="19sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        />
+    <LinearLayout
+        android:id="@+id/lin_native_top"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="#cccccc"
+        android:layout_below="@id/tv_native_top"
+        android:layout_marginTop="5dp"
+        >
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_center_weex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lin_native_top"
+        android:text="2 weex部分"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        />
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_center_weex"
+        android:layout_marginTop="5dp"
+        />
+    </RelativeLayout>
+</ScrollView>

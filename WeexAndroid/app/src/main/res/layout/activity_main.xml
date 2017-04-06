@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -9,10 +9,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.weex.mix.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.weex.mix.activity.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-</RelativeLayout>
+        android:id="@+id/tv_start"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="weex初始"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/tv_start2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="weex初始2"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/tv_start3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="weex初始3"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/tv_start4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="weex初始4"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        />
+</LinearLayout>
