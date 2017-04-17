@@ -1,6 +1,9 @@
 package com.weex.mix.activity;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXSDKInstance;
+import com.taobao.weex.common.IWXDebugProxy;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.weex.mix.util.AssertUtil;
 
@@ -23,17 +27,29 @@ import java.util.Map;
 public abstract class AbsWeexActivity extends AppCompatActivity implements IWXRenderListener {
 
     protected WXSDKInstance mWXSDKInstance;
-    protected BroadcastReceiver mReceiver;
     protected ViewGroup mContainer;
 
     private String mUrl;
+
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (IWXDebugProxy.ACTION_DEBUG_INSTANCE_REFRESH.equals(intent.getAction())) {
+                if (!TextUtils.isEmpty(mUrl)) {
+                    renderPageByURL(mUrl);
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createWeexInstance();
         mWXSDKInstance.onActivityCreate();
-
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(IWXDebugProxy.ACTION_DEBUG_INSTANCE_REFRESH);
+        registerReceiver(mReceiver, filter);
     }
 
     protected String getUrl(){
@@ -122,6 +138,10 @@ public abstract class AbsWeexActivity extends AppCompatActivity implements IWXRe
         super.onDestroy();
         if (mWXSDKInstance != null){
             mWXSDKInstance.onActivityDestroy();
+        }
+
+        if (mReceiver != null){
+            unregisterReceiver(mReceiver);
         }
     }
 

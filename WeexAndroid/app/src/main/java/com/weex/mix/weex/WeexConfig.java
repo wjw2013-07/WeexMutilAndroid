@@ -3,6 +3,7 @@ package com.weex.mix.weex;
 import android.app.Application;
 
 import com.taobao.weex.InitConfig;
+import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.common.WXException;
 import com.weex.mix.weex.adapter.ImageAdapter;
@@ -27,6 +28,15 @@ public class WeexConfig {
         } catch (WXException e) {
             e.printStackTrace();
         }
+
+    }
+
+
+    public static void initDebugEnvironment(boolean enable, String host) {
+        // 是否开启 debug 模式，默认关闭
+        WXEnvironment.sRemoteDebugMode = enable;
+        // DebugServer的websocket地址
+        WXEnvironment.sRemoteDebugProxyUrl = "ws://" + host + ":8088/debugProxy/native";
 
     }
 }

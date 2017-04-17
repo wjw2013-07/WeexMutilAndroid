@@ -13,6 +13,7 @@ public class WxApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        WeexConfig.initDebugEnvironment(true, "10.1.193.9");
         WeexConfig.initConfig(this);
     }
 }
